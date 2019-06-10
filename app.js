@@ -1,12 +1,19 @@
 import express from 'express'
-import router from './routes/index.js'
+
+// import router from './routes/index.js'
+
 import cookieParser from 'cookie-parser'
+
 import session from 'express-session'
 import connectMongo from 'connect-mongo'
+
 import history from 'connect-history-api-fallback'
+
 import chalk from 'chalk'
 
 const config = require('config-lite')(__dirname);
+
+
 
 const app=express();
 
@@ -40,7 +47,7 @@ app.use(session({
     })
 }));
 
-router(app);
+// router(app);
 
 app.use(history());
 // app.use(express.static('./public'));
