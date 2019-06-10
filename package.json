@@ -1,0 +1,39 @@
+{
+  "name": "elm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon --harmony index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/webfrontzj/node-elm.git"
+  },
+  "author": "zj",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/webfrontzj/node-elm/issues"
+  },
+  "homepage": "https://github.com/webfrontzj/node-elm#readme",
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-classes": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+    "babel-plugin-transform-export-extensions": "^6.22.0",
+    "nodemon": "^1.19.0"
+  },
+  "dependencies": {
+    "babel-preset-stage-3": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "chalk": "^2.4.2",
+    "config-lite": "^2.1.0",
+    "connect-history-api-fallback": "^1.6.0",
+    "connect-mongo": "^2.0.3",
+    "cookie-parser": "^1.4.4",
+    "cross-env": "^5.2.0",
+    "express": "^4.17.0",
+    "express-session": "^1.16.1"
+  }
+}
