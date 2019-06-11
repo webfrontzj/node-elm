@@ -1,6 +1,6 @@
 import express from 'express'
 
-// import router from './routes/index.js'
+import router from './routes/index.js'
 
 import cookieParser from 'cookie-parser'
 
@@ -47,7 +47,7 @@ app.use(session({
     })
 }));
 
-// router(app);
+router(app);
 
 app.use(history());
 // app.use(express.static('./public'));
