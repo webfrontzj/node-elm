@@ -35,7 +35,11 @@
     "cross-env": "^5.2.0",
     "express": "^4.17.0",
     "express-session": "^1.16.1",
+    "formidable": "^1.2.1",
+    "gm": "^1.23.1",
     "mongoose": "^5.5.14",
-    "pinyin": "^2.9.0"
+    "node-fetch": "^2.6.0",
+    "pinyin": "^2.9.0",
+    "qiniu": "^6.1.13"
   }
 }
