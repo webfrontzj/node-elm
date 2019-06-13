@@ -5,9 +5,6 @@ import CityHandle from '../controller/v1/cities'
 
 const router=express.Router();
 
-router.get('/cities',function(req,res,next){
-    console.log(req);
-    next();
-})
+router.get('/cities',CityHandle.getCity);
 
 export default router;

@@ -1,5 +1,5 @@
 import express from 'express'
-
+import db from './mongodb/db'
 import router from './routes/index.js'
 
 import cookieParser from 'cookie-parser'

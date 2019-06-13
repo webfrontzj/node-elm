@@ -40,7 +40,7 @@ export default class BaseComponent{
         };
         if(type == 'POST'){
             Object.defineProperty(requestConfig,'body',{
-                value:JSON.stringify(data);
+                value:JSON.stringify(data)
             })
         }
         let responseJson;

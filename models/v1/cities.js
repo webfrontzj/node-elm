@@ -34,9 +34,12 @@ citySchema.statics.cityGuess=function(name){
 citySchema.statics.cityHot=function(){
     return new Promise(async (resolve,reject)=>{
         try{
+            console.log('enter');
             const city=await this.findOne();
             resolve(city.data.hotCities);
+            console.log(city.data.hotCities);
         }catch(err){
+            console.log(err);
             reject({
                 name:'ERROR_DATA',
                 message:'查找数据失败'
