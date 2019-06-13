@@ -91,7 +91,7 @@ citySchema.statics.getCityById=function(id){
 const Cities=mongoose.model('Cities',citySchema);
 
 Cities.findOne((err,data)=>{
-    console.log('in findOne');
+    // console.log('in findOne');
     if(!data){
         Cities.create({data:cityData});
     }

@@ -4,8 +4,7 @@ import mongoose from 'mongoose'
 const config = require('config-lite')(__dirname);
 import chalk from 'chalk'
 
-console.log(config.url);
-mongoose.connect(config.url,{useMongoClient:true});
+mongoose.connect(config.url,{ useNewUrlParser: true });
 mongoose.Promise=global.Promise;
 
 const db=mongoose.connection;

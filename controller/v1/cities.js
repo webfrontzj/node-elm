@@ -17,8 +17,8 @@ class CityHandle extends AddressComponent{
         try{
             switch(type){
                 case 'guess':
-                    const city=await this.getCityName(req);
-                    cityInfo=await Cities.cityGuess(city);
+                    const city=await this.getCityName(req);//获取城市的拼音
+                    cityInfo=await Cities.cityGuess(city);//根据拼音获取城市信息
                     break;
                 case 'hot':
                     cityInfo=await Cities.cityHot();

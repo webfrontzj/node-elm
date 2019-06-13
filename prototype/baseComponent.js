@@ -77,6 +77,7 @@ export default class BaseComponent{
     }
 
     async uploadImg(req,res,next){
+        console.log('进入uploadimg');
         const type=req.params.type;
         try{
             const image_path=await this.getPath(req,res);
@@ -95,6 +96,7 @@ export default class BaseComponent{
     }
 
     async getPath(req,res){
+        // console.log('come in');
         return new Promise((resolve,reject)=>{
             const form=formidable.IncomingForm();
             form.uploadDir='./public/img';
