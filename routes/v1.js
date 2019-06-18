@@ -5,6 +5,9 @@ import CityHandle from '../controller/v1/cities'
 import SearchPlace from '../controller/v1/search'
 import BaseComponent from '../prototype/baseComponent'
 import Carts from '../controller/v1/carts'
+import Remark from '../controller/v1/remark'
+import Captchas from '../controller/v1/captchas'
+
 
 
 const baseHandle=new BaseComponent();
@@ -16,6 +19,9 @@ router.get('/exactaddress',CityHandle.getExactAddress);
 router.get('/pois',SearchPlace.search);
 router.post('/addimg/:type',baseHandle.uploadImg);
 router.post('/carts/checkout',Carts.checkout);
+router.get('/carts/:cart_id/remarks',Remark.getRemarks);
+router.post('/captchas',Captchas.getCaptchas);
+
 
 
 export default router;
