@@ -220,7 +220,11 @@ class User extends AddressComponent{
                 }
             }catch(err){
                 console.log('修改密码失败',err);
-                
+                res.send({
+                    status:0,
+                    type:'ERROR_CHANGE_PASSWORD',
+                    message:'修改密码失败'
+                });
             }
 
         });
@@ -234,4 +238,98 @@ class User extends AddressComponent{
         const md5=crypto.createHash('md5')
         return md5.update(password).digest('base64')
     }
+
+    async getUserList(req,res,next){
+        const {limit=20,offset=0}=req.query;
+        try{
+            const users=await UserInfoModel.find({},'-_id').sort({user_id:-1}).limit(Number(limit)).skip(Number(offset));
+            res.send(users);
+        }catch(err){
+            console.log('获取用户列表数据失败',err);
+            res.send({
+                status:0,
+                type:'GET_DATA_ERROR',
+                message:'获取用户列表数据失败'
+            });
+        }
+    }
+
+    async getUserCount(req,res,next){
+        try{
+            const count=await UserInfoModel.count();
+            res.send({
+                status:1,
+                count
+            });
+        }catch(err){
+            console.log('获取用户数量失败',err);
+            res.send({
+                status:0,
+                type:'ERROR_TO_GET_USER_COUNT',
+                message:'获取用户数量失败'
+            });
+        }
+    }
+
+    async updateAvatar(req,res,next){
+        const sid=req.session.user_id;
+        const pid=req.params.user_id;
+        const user_id=sid || pid;
+        if(!user_id || !Number(user_id)){
+            console.log('更新头像，user_id错误',user_id);
+            res.send({
+                status:0,
+                type:'ERROR_USERID',
+                message:'user_id参数错误'
+            });
+            return;
+        }
+        try{
+            const image_path=await this.getPath(req);
+            await UserInfoModel.findOneAndUpdate({user_id},{$set:{avatar:image_path}});
+            res.send({
+                status:1,
+                image_path
+            });
+        }catch(err){
+            console.log('上传图片失败',err);
+            res.send({
+                status:0,
+                type:'ERROR_UPLOAD_IMG',
+                message:'上传图片失败'
+            });
+        }
+    }
+
+    async getUserCity(req,res,next){
+        const cityArr=['北京','上海','深圳','杭州'];
+        const filterArr=[];
+        cityArr.forEach(item=>{
+            filterArr.push(UserInfoModel.find({city:item}).count());
+        });
+        filterArr.push(UserInfoModel.$where('!"北京上海深圳杭州".includes(this.city)').count());
+        Promise.all(filterArr).then(result=>{
+            res.send({
+                status:1,
+                user_city:{
+                    beijing:result[0],
+                    shanghai:result[1],
+                    shenzhen:result[2],
+                    hangzhou:result[3],
+                    qita:result[4]
+                }
+            });
+        }).catch(err=>{
+            console.log('获取用户分布城市数据失败',err);
+            res.send({
+                status:0,
+                type:'ERROR_GET_USER_CITY',
+                message:'获取用户分布城市数据失败'
+            });
+        });
+    }
+
+
 }
+
+export default new User();

@@ -7,6 +7,7 @@ import BaseComponent from '../prototype/baseComponent'
 import Carts from '../controller/v1/carts'
 import Remark from '../controller/v1/remark'
 import Captchas from '../controller/v1/captchas'
+import User from '../controller/v2/user'
 
 
 
@@ -21,7 +22,11 @@ router.post('/addimg/:type',baseHandle.uploadImg);
 router.post('/carts/checkout',Carts.checkout);
 router.get('/carts/:cart_id/remarks',Remark.getRemarks);
 router.post('/captchas',Captchas.getCaptchas);
-
+router.get('/user',User.getInfo);
+router.get('/user/:user_id',User.getInfoById);
+router.get('/users/list',User.getUserList);
+router.get('/users/count',User.getUserCount);
+router.get('/user/city/count',User.getUserCity);
 
 
 export default router;
