@@ -8,7 +8,9 @@ import Carts from '../controller/v1/carts'
 import Remark from '../controller/v1/remark'
 import Captchas from '../controller/v1/captchas'
 import User from '../controller/v2/user'
-
+import Address from '../controller/v1/address'
+import Order from '../controller/v1/order'
+import Hongbao from '../controller/promotion/hongbao'
 
 
 const baseHandle=new BaseComponent();
@@ -27,6 +29,13 @@ router.get('/user/:user_id',User.getInfoById);
 router.get('/users/list',User.getUserList);
 router.get('/users/count',User.getUserCount);
 router.get('/user/city/count',User.getUserCity);
+router.get('/users/:user_id/addresses',Address.getAddress);
+router.post('/users/:user_id/addresses',Address.addAddress);
+router.get('/address/:address_id',Address.getAddAddressById);
+router.delete('/users/:user_id/addresses/:address_id',Address.deleteAddress);
+router.post('/users/:user_id/carts/:cart_id/orders',Order.postOrder);
+router.post('/users/:user_id/hongbao/exchange',Hongbao.exchange);
+
 
 
 export default router;

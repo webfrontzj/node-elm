@@ -1,10 +1,10 @@
 'use strict';
 
 import v1 from './v1'
-// import v2 from './v2'
-// import v3 from './v3'
-// import v4 from './v4'
-// import ugc from './ugc'
+import v2 from './v2'
+import v3 from './v3'
+import v4 from './v4'
+import ugc from './ugc'
 // import bos from './bos'
 // import eus from './eus'
 // import admin from './admin'
@@ -16,10 +16,10 @@ import v1 from './v1'
 
 export default app => {
 	app.use('/v1', v1);
-	// app.use('/v2', v2);
-	// app.use('/v3', v3);
-	// app.use('/v4', v4);
-	// app.use('/ugc', ugc);
+	app.use('/v2', v2);
+	app.use('/v3', v3);
+	app.use('/v4', v4);
+	app.use('/ugc', ugc);
 	// app.use('/bos', bos);
 	// app.use('/eus', eus);
 	// app.use('/admin', admin);
