@@ -11,8 +11,8 @@ import admin from './admin'
 import payapi from './payapi'
 import statis from './statis'
 import member from './member'
-// import shopping from './shopping'
-// import promotion from './promotion'
+import shopping from './shopping'
+import promotion from './promotion'
 
 export default app => {
 	app.use('/v1', v1);
@@ -26,6 +26,6 @@ export default app => {
 	app.use('/payapi', payapi);
 	app.use('/member', member);
 	app.use('/statis', statis);
-	// app.use('/shopping', shopping);
-	// app.use('/promotion', promotion);
+	app.use('/shopping', shopping);
+	app.use('/promotion', promotion);
 }
