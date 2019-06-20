@@ -11,6 +11,8 @@ import history from 'connect-history-api-fallback'
 
 import chalk from 'chalk'
 
+import Statistic from './middlewares/statistic'
+
 const config = require('config-lite')(__dirname);
 
 
@@ -46,7 +48,7 @@ app.use(session({
         url:config.url
     })
 }));
-
+app.use(Statistic.apiRecord);
 router(app);
 
 app.use(history());
